@@ -6,11 +6,38 @@
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-select": "^2.2.5",
+    "@radix-ui/react-tabs": "^1.1.12",
+    "@reduxjs/toolkit": "^2.8.2",
+    "@types/three": "^0.176.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.15.0",
+    "lucide-react": "^0.511.0",
     "next": "latest",
+    "next-themes": "^0.4.6",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "latest",
+    "react-redux": "^9.2.0",
+    "recharts": "^2.15.3",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.176.0"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.0-beta.3"
   }
 }
