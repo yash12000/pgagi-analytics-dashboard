@@ -1,16 +1,24 @@
 import { configureStore } from "@reduxjs/toolkit"
-import weatherReducer from "./slices/weather-slice"
-import newsReducer from "./slices/news-slice"
-import financeReducer from "./slices/finance-slice"
+import { setupListeners } from "@reduxjs/toolkit/query"
+import { weatherApi } from "./services/weather"
+import { newsApi } from "./services/news"
+import { financeApi } from "./services/finance"
 
 export const store = configureStore({
   reducer: {
-    weather: weatherReducer,
-    news: newsReducer,
-    finance: financeReducer,
+    [weatherApi.reducerPath]: weatherApi.reducer,
+    [newsApi.reducerPath]: newsApi.reducer,
+    [financeApi.reducerPath]: financeApi.reducer,
   },
-  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+      weatherApi.middleware,
+      newsApi.middleware,
+      financeApi.middleware
+    ),
 })
+
+setupListeners(store.dispatch)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

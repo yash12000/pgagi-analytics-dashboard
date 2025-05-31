@@ -1,3 +1,40 @@
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.example.com"
+
+export async function fetchData<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options?.headers,
+    },
+  })
+
+  if (!response.ok) {
+    throw new Error(`API request failed: ${response.statusText}`)
+  }
+
+  return response.json()
+}
+
+export const api = {
+  get: <T>(endpoint: string, options?: RequestInit) =>
+    fetchData<T>(endpoint, { ...options, method: "GET" }),
+  post: <T>(endpoint: string, data: any, options?: RequestInit) =>
+    fetchData<T>(endpoint, {
+      ...options,
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+  put: <T>(endpoint: string, data: any, options?: RequestInit) =>
+    fetchData<T>(endpoint, {
+      ...options,
+      method: "PUT",
+      body: JSON.stringify(data),
+    }),
+  delete: <T>(endpoint: string, options?: RequestInit) =>
+    fetchData<T>(endpoint, { ...options, method: "DELETE" }),
+}
+
 export class APIService {
   private static readonly WEATHER_API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY
   private static readonly NEWS_API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY

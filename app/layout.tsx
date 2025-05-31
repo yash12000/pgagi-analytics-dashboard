@@ -1,15 +1,16 @@
-import type React from "react"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/toaster"
-import { ReduxProvider } from "@/store/provider"
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
+import { ReduxProvider } from "@/components/providers/redux-provider"
+import { ToastProvider } from "@/components/ui/use-toast"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: "Analytics Dashboard | PGAGI",
-  description: "Comprehensive analytics dashboard with multiple data sources",
+export const metadata: Metadata = {
+  title: "PGAGI Analytics Dashboard",
+  description: "A comprehensive analytics dashboard for PGAGI",
 }
 
 export default function RootLayout({
@@ -20,12 +21,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ReduxProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </ReduxProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <ReduxProvider>
+            <ToastProvider>
+              {children}
+              <Toaster />
+            </ToastProvider>
+          </ReduxProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

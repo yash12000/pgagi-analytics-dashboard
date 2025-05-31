@@ -1,8 +1,8 @@
 "use client"
 
-import { Bell, Menu, Search, Settings, User } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Bell, Menu, Search, Settings, User, Sun, Moon } from "lucide-react"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,10 +10,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "../ui/dropdown-menu"
 import { ModeToggle } from "../mode-toggle"
 import { useState } from "react"
-import { useMobile } from "@/hooks/use-mobile"
+import { useMobile } from "../../hooks/use-mobile"
 
 export function DashboardHeader() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -45,14 +45,14 @@ export function DashboardHeader() {
       </Button>
       <div className="flex items-center gap-2">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger>
             <Button variant="outline" size="icon" className="relative">
               <Bell className="h-5 w-5" />
               <span className="sr-only">Notifications</span>
               <span className="absolute right-1 top-1 flex h-2 w-2 rounded-full bg-primary"></span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent>
             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Weather alert: Heavy rain expected</DropdownMenuItem>
@@ -62,13 +62,13 @@ export function DashboardHeader() {
         </DropdownMenu>
         <ModeToggle />
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger>
             <Button variant="outline" size="icon" className="rounded-full border-0">
               <User className="h-5 w-5" />
               <span className="sr-only">User</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Profile</DropdownMenuItem>

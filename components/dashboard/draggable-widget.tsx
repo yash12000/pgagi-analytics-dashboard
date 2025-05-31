@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useRef } from "react"
 import { useDrag, useDrop } from "react-dnd"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 interface DraggableWidgetProps {
   id: string

@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { fetchStockData } from "@/store/slices/finance-slice"
